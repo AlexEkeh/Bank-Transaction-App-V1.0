@@ -1,0 +1,44 @@
+{
+  "name": "008-setup",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "build": "tsc",
+    "dev": "(tsc &) && nodemon ./bin/www",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/nanoid": "~3.0.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~4.3.2",
+    "ejs": "~3.1.6",
+    "express": "~4.17.1",
+    "http-errors": "~1.8.0",
+    "jest": "~27.5.1",
+    "morgan": "~1.10.0",
+    "nanoid": "~3.3.2",
+    "nodemon": "~2.0.15",
+    "supertest": "~6.2.2",
+    "uuid": "~8.3.2"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "~1.4.2",
+    "@types/debug": "~4.1.7",
+    "@types/express": "~4.17.13",
+    "@types/http-errors": "~1.8.1",
+    "@types/jest": "~27.4.1",
+    "@types/morgan": "~1.9.3",
+    "@types/node": "14",
+    "@types/nodemon": "~1.19.1",
+    "@types/supertest": "~2.0.12",
+    "@types/uuid": "~8.3.4",
+    "@typescript-eslint/eslint-plugin": "~4.29.1",
+    "@typescript-eslint/parser": "~4.29.1",
+    "eslint": "~7.32.0",
+    "eslint-config-prettier": "~8.3.0",
+    "prettier": "~2.3.2",
+    "ts-jest": "~27.1.4",
+    "typescript": "~4.3.5"
+  }
+}
