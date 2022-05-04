@@ -1,8 +1,10 @@
-import { getAllBalance, getSingleBalance, createAccount, transfer } from './controllers';
+import { homepage, getAllBalance, getSingleBalance, createAccount, transfer } from './controllers';
 import express from 'express';
 const router = express.Router();
 
 
+// WELCOME PAGE
+router.get('/', homepage);
 
 // GET ALL ACCOUNTS AND THEIR BALANCE
 router.get('/balance', getAllBalance);

@@ -3,6 +3,12 @@ import { getAllBal, getSingleBal, createNewAccount, transferFunds, balancesDB as
 import { v4 as uuid4 } from 'uuid';
 
 
+// WELCOME PAGE
+const homepage = async (_req: Request, res: Response, _next: NextFunction) => {
+  return res.status(200).send("Welcome to Alexander's Bank Transaction Application V1.0. Please visit https://alexbankapp.heroku.com/balance to view all account information and https://alexbankapp.heroku.com/balance/accountNo to view individual account information. The accountNo supplied should not be in quote...Thank You!!! ");
+ }
+
+
 // GET ALL BALANCES IN THE DATABASE
 const getAllBalance = async (_req: Request, res: Response, next: NextFunction) => {
   try {
@@ -122,6 +128,7 @@ function accountNoGenerator() {
 
 // EXPORT ALL THE CONTROLLERS
 export {
+  homepage,
   getAllBalance,
   getSingleBalance,
   createAccount,
