@@ -56,21 +56,21 @@ The API you are to develop should be able to handle a transfer request of the fo
 
 ## RESULT OF APPLICATION IMPLEMENTATION DETAILS
 
-Hosted at Heroku:  https://alexbankapp.herokuapp.com/
+Hosted at Heroku:  https://alexbankapp-v1.herokuapp.com/
 
 
-START APPLICATION AND VIEW INITIAL ACCOUNTS DATABASE
- https://alexbankapp.herokuapp.com/balance
+VIEW ALL ACCOUNT INFORMATION STORED IN DATABASE
+ https://alexbankapp-v1.herokuapp.com/balance
 
 
 VIEW INDIVIDUAL ACCOUNT INFORMATION
- https://alexbankapp.herokuapp.com/:accountNoId
+ https://alexbankapp-v1.herokuapp.com/:accountNoId
 
 
 CREATE ACCOUNT
- https://alexbankapp.herokuapp.com/create-account
+ https://alexbankapp-v1.herokuapp.com/create-account
 
 
 MAKE TRANSFERS
-  https://alexbankapp.herokuapp.com/transfer
+https://alexbankapp-v1.herokuapp.com/transfer
 
