@@ -5,7 +5,7 @@ import app from '../src/app';
 // TEST FOR GET ALL ACCOUNT INFORMATION
 describe('GET /balance', () => {
   test('Should Return Status 200 For Empty Account Database for getAllBalance', async () => {
-    const result = await request(app).get('/api/balance')
+    const result = await request(app).get('/balance')
     .set('Accept', 'application/json');
     expect(result.statusCode).toBe(200);
     expect(result.body).toEqual([]);
@@ -16,7 +16,7 @@ describe('GET /balance', () => {
 // TEST FOR GET SINGLE ACCOUNT INFORMATION
 describe('GET /balance/accountNo', () => {
   test('Should Return Status 404 For Wrong Account Input OR No Input Specified For getSingleBalance', async () => {
-    const result = await request(app).get('/api/balance/:accountNo')
+    const result = await request(app).get('/balance/:accountNo')
     .set('Accept', 'application/json');
      expect(result.statusCode).toBe(404);
   })
@@ -27,7 +27,7 @@ describe('GET /balance/accountNo', () => {
 describe('POST /create-account', () => {
   test('Should Create a New Account And Return Status 201', async () => {
     const result = await request(app)
-    .post('/api/create-account')
+    .post('/create-account')
     .set('Accept', 'application/json')
     .send({
       "balance": 50000
@@ -45,7 +45,7 @@ describe('POST /create-account', () => {
 describe('POST /transfer', () => {
   test('Should Return Status 400 If No Transaction Details Are Specified or Wrong Input', async () => {
     const result = await request(app)
-    .post('/api/transfer')
+    .post('/transfer')
     .set('Accept', 'application/json')
     expect(result.statusCode).toBe(400)
     expect(result.body.message).toBeDefined()

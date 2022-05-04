@@ -31,7 +31,7 @@ function createNewAccount(content) {
     return new Promise((resolve, _reject) => {
         const newAccount = {
             accountNo: content.accountNo,
-            balance: content.balance,
+            balance: content.amount,
             createdAt: content.createdAt
         };
         balancesDB.push(newAccount);

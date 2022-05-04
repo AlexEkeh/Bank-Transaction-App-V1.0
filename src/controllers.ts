@@ -1,15 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
 import { getAllBal, getSingleBal, createNewAccount, transferFunds, balancesDB as balance} from './models'
-import { nanoid } from 'nanoid';
 import { v4 as uuid4 } from 'uuid';
 
 
 // GET ALL BALANCES IN THE DATABASE
 const getAllBalance = async (_req: Request, res: Response, next: NextFunction) => {
   try {
-    const contents = await getAllBal(); 
+    const contents = await getAllBal();
     if (!contents) {
-      res.status(404).json({ message: 'ACCOUNT INFORMATION NOT FOUND!' });
+      res.status(404).json({ message: 'Account Information Not Found!' });
     }
     res.status(200).json(contents);
   } catch(error) {
@@ -24,7 +23,7 @@ const getSingleBalance = async (req: Request, res: Response, next: NextFunction)
     let getAccountId = req.params.accountNo;
     const content = await getSingleBal(getAccountId);
     if (!content) {
-      res.status(404).json({ message: "ACCOUNT NUMBER DOES NOT EXIST!" });
+      res.status(404).json({ message: "Account Number Does Not Exist!" });
     } else {
       res.status(200).json(content);
     }
@@ -38,21 +37,21 @@ const getSingleBalance = async (req: Request, res: Response, next: NextFunction)
 const createAccount = async (req: Request, res: Response, next: NextFunction)  => {
     try{
       const {
-        balance
+        amount
       } = req.body;
 
       // VALIDATION FOR OPENING ACCOUNT BALANCE
-      if ((typeof balance) == 'string') {
-        res.status(400).json({ message: "ACCOUNT OPENING BALANCE CANNOT BE STRING!"})
+      if ((typeof amount) == 'string' || !amount) {
+        res.status(400).json({ message: "Please Enter A Valid Opening Amount!"})
       } else {
         const content = {
-          accountNo: nanoid(),
-          balance,
+          accountNo: accountNoGenerator().toString(),
+          amount,
           createdAt: new Date().toISOString()
         }
 
-        if (content.balance < 0) {
-          res.status(400).json({ message: `ACCOUNT OPENING BALANCE MUST BE GREATER THAN ZERO!`});
+        if (content.amount < 0) {
+          res.status(400).json({ message: `Account Opening Balance Must Be Greater Than Zero!`});
         } else {
           const newAccountInfo = await createNewAccount(content);
           res.status(201).json(newAccountInfo);
@@ -74,6 +73,9 @@ const transfer = async (req: Request, res: Response, next: NextFunction) => {
       receiverAccountNo,
     } = req.body;
 
+    if (!senderAccountNo || !amount || !receiverAccountNo) {
+      return res.status(400).json({ message: "Please Provide All Fields"})
+    }
 
     const content = {
       referenceId: uuid4(),
@@ -90,17 +92,17 @@ const transfer = async (req: Request, res: Response, next: NextFunction) => {
     })
 
     if (content.amount < 0 ) {
-      res.status(400).json({ message: `PLEASE ENTER AN AMOUNT GREATER THAN ZERO!`});
+      res.status(400).json({ message: `Please Enter An Amount Greater Than Zero!`});
     } else if ((typeof amount) == 'string') {
-      res.status(400).json({ message: "FUND TRANSFER AMOUNT CANNOT BE STRING!"})
+      res.status(400).json({ message: "Fund Transfer Amount Cannot Be String!"})
     } else if (balance.every((item: any) => item.accountNo !== content.senderAccountNo)){
-      res.status(400).json({ message: `SENDER ACCOUNT NUMBER DOES NOT EXIST!`});
+      res.status(400).json({ message: `Sender Account Number Does Not Exist!`});
     } else if (senderAccountNo === receiverAccountNo) {
-      res.status(400).json({ message: "SENDER ACCOUNT NUMBER AND RECEIVER ACCOUNT NUMBER CANNOT BE THE SAME!"});
+      res.status(400).json({ message: "Sender Account Number And Receiver Account Number Cannot Be The Same!"});
     } else if (!accountNosList.includes(receiverAccountNo)) {
-      res.status(400).json({ message: "RECEIVER ACCOUNT NUMBER DOES NOT EXIST!"});
+      res.status(400).json({ message: "Receiver Account Number Does Not Exist!"});
     } else if (content.amount > balance.find((item: any) => item.accountNo == content.senderAccountNo).balance) {
-      res.status(400).json({ message: `INSUFFICIENT FUNDS!`});
+      res.status(400).json({ message: `Insufficient Funds!`});
     } else {
       const transactionData = await transferFunds(content);
       res.status(200).json(transactionData);
@@ -109,6 +111,14 @@ const transfer = async (req: Request, res: Response, next: NextFunction) => {
     next(error)
   }
 }
+
+
+// 10-DIGIT ACCOUNT NUMBER GENERATOR FUNCTION
+function accountNoGenerator() {
+  const result = Math.floor(Math.random() * 9000000000) + 1000000000;
+  return result;
+}
+
 
 // EXPORT ALL THE CONTROLLERS
 export {

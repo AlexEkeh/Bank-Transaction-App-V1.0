@@ -25,7 +25,7 @@ export function getSingleBal(accountNo: any){
 
 interface Create {
   accountNo: string,
-  balance: number,
+  amount: number,
   createdAt: string
 }
 
@@ -35,7 +35,7 @@ export function createNewAccount(content: Create): any {
 
       const newAccount = {
         accountNo: content.accountNo,
-        balance: content.balance,
+        balance: content.amount,
         createdAt: content.createdAt
       };
 

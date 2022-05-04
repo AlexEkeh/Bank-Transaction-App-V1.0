@@ -56,7 +56,7 @@ The API you are to develop should be able to handle a transfer request of the fo
 
 ## RESULT OF APPLICATION IMPLEMENTATION DETAILS
 
-Hosted at Heroku:  https://alexbankapp.herokuapp.com/ 
+Hosted at Heroku:  https://alexbankapp.herokuapp.com/
 
 
 START APPLICATION AND VIEW INITIAL ACCOUNTS DATABASE
