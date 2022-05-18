@@ -1,5 +1,7 @@
 ## RESULT OF APPLICATION IMPLEMENTATION DETAILS
 
+## Built with Node, Express and Typescript
+
 Hosted at Heroku:  https://alexbankapp-v1.herokuapp.com/
 
 
