@@ -30,7 +30,7 @@ describe('POST /create-account', () => {
     .post('/create-account')
     .set('Accept', 'application/json')
     .send({
-      "balance": 50000
+      "amount": 50000
     })
     expect(result.statusCode).toBe(201);
     expect(result.body.accountNo).toBeDefined()
