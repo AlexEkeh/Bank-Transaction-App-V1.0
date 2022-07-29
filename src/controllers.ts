@@ -5,7 +5,7 @@ import { v4 as uuid4 } from 'uuid';
 
 // WELCOME PAGE
 const homepage = async (_req: Request, res: Response, _next: NextFunction) => {
-  return res.status(200).send("Welcome to Alexander's Bank Transaction Application V1.0. Please visit https://alexbankapp-v1.heroku.com/balance to view all account information and https://alexbankapp-v1.heroku.com/balance/accountNo to view individual account information. The accountNo supplied should not be in quote...Thank You!!! ");
+  return res.status(200).send("Welcome to Alexander's Bank Transaction Application V1.0. Please visit  https://alexbankapp-v1.herokuapp.com/balance to view all account information and https://alexbankapp-v1.herokuapp.com/balance/accountNo to view individual account information. The accountNo supplied should not be in quote...Thank You!!! ");
  }
 
 

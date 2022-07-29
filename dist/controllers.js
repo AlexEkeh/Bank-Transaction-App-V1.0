@@ -5,7 +5,7 @@ const models_1 = require("./models");
 const uuid_1 = require("uuid");
 // WELCOME PAGE
 const homepage = async (_req, res, _next) => {
-    return res.status(200).send("Welcome to Alexander's Bank Transaction Application V1.0. Please visit https://alexbankapp.heroku.com/balance to view all account information and https://alexbankapp.heroku.com/balance/accountNo to view individual account information. The accountNo supplied should not be in quote...Thank You!!! ");
+    return res.status(200).send("Welcome to Alexander's Bank Transaction Application V1.0. Please visit  https://alexbankapp-v1.herokuapp.com/balance to view all account information and https://alexbankapp-v1.herokuapp.com/balance/accountNo to view individual account information. The accountNo supplied should not be in quote...Thank You!!! ");
 };
 exports.homepage = homepage;
 // GET ALL BALANCES IN THE DATABASE
